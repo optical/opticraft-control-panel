@@ -1,0 +1,72 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "mysql/mysql.d.ts": {
+      "commit": "2d04c579cbe274197c15cf9c3004d2ffc421b1dd"
+    },
+    "node/node.d.ts": {
+      "commit": "1400e07731048ae841bcebed658cb68539cbfb99"
+    },
+    "when/when.d.ts": {
+      "commit": "954c64c100478ebb0b3cd1d9949237c2ee6c2a9d"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "2d04c579cbe274197c15cf9c3004d2ffc421b1dd"
+    },
+    "convict/convict.d.ts": {
+      "commit": "2d04c579cbe274197c15cf9c3004d2ffc421b1dd"
+    },
+    "express/express.d.ts": {
+      "commit": "b0056383b51495b373a32b791de8112fcafe2ace"
+    },
+    "body-parser/body-parser.d.ts": {
+      "commit": "b0c9a94cadc4af42d2c365b2e425788109e8a0d5"
+    },
+    "bunyan/bunyan.d.ts": {
+      "commit": "2520bce9a8a71b66e67487cbd5b33fec880b0c55"
+    },
+    "express-session/express-session.d.ts": {
+      "commit": "2520bce9a8a71b66e67487cbd5b33fec880b0c55"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "a61199a4684d70334795302f09fb2a6b8ca016db"
+    },
+    "knockout/knockout.d.ts": {
+      "commit": "65ea56c919fd95dcd0ca3c59c9aa5eaa99c86885"
+    },
+    "serve-favicon/serve-favicon.d.ts": {
+      "commit": "65ea56c919fd95dcd0ca3c59c9aa5eaa99c86885"
+    },
+    "bootstrap/bootstrap.d.ts": {
+      "commit": "65ea56c919fd95dcd0ca3c59c9aa5eaa99c86885"
+    },
+    "rest/rest.d.ts": {
+      "commit": "954c64c100478ebb0b3cd1d9949237c2ee6c2a9d"
+    },
+    "moment/moment.d.ts": {
+      "commit": "b0056383b51495b373a32b791de8112fcafe2ace"
+    },
+    "compression/compression.d.ts": {
+      "commit": "b0056383b51495b373a32b791de8112fcafe2ace"
+    },
+    "urijs/URI.d.ts": {
+      "commit": "3ab24075de4d24ec31c1885ce71a66a8165bb10c"
+    },
+    "nodemailer/nodemailer.d.ts": {
+      "commit": "1400e07731048ae841bcebed658cb68539cbfb99"
+    },
+    "nodemailer-direct-transport/nodemailer-direct-transport.d.ts": {
+      "commit": "1400e07731048ae841bcebed658cb68539cbfb99"
+    },
+    "nodemailer-smtp-transport/nodemailer-smtp-transport.d.ts": {
+      "commit": "1400e07731048ae841bcebed658cb68539cbfb99"
+    },
+    "nodemailer/nodemailer-types.d.ts": {
+      "commit": "1400e07731048ae841bcebed658cb68539cbfb99"
+    }
+  }
+}

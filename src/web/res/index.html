@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link rel="stylesheet" href="res/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="res/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="res/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="res/style.css">
+    <script src="res/bundle.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Opticraft SMP Control Panel</title>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Opticraft Admin Panel</a>
+            </div>
+                <!-- ko if: authInfo().loggedIn() -->
+                <p data-bind="with: authInfo" class="navbar-right navbar-text">
+                    Signed in as <span data-bind="text: username"></span> <a href="#" class="navbar-link" data-bind="click: logout"><i class="fa fa-sign-out fa-x2"></i></a>
+                </p>
+                <!-- /ko -->
+        </div>
+    </nav>
+
+    <div class="container" data-bind="with: rewardSender">
+        <h2>Donation Rewards</h2>
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="rewardUsername">Username</label>
+                <input data-bind="textInput: username" type="text" class="form-control" id="rewardUsername" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="rewardProduct">Reward</label>
+                <select class="form-control" id="rewardProduct" data-bind="options: products, optionsText: 'productId', value: selectedProduct"></select>
+            </div>
+            <button class="btn btn-primary" data-bind="click: sendReward, enable: username().length > 0 && !requestInFlight()"><i class="fa fa-paper-plane-o"></i> Send</button>
+            <span><i data-bind="fadeVisible: requestInFlight()" class="fa fa-spinner fa-lg fa-spin"></i></span>
+        </form>
+        <div data-bind="fadeVisible: lastRequest()" style="margin-top: 10px" class="alert alert-success alert-dismissible" role="alert">
+            <button type="submit" data-bind="click: lastRequest(null)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Success!</strong> <span data-bind="text: lastRequestMessage"></span>
+        </div>
+    </div>
+
+   <div class="container">
+        <div data-bind="with: topVoters">
+            <h2>Top Voters</h2>
+            <div class="row form-inline">
+                <div class="form-group">
+                    <label for="yearSelection">Year</label>
+                    <select data-bind="options: availableYears, optionsText: 'year', value: selectedYear"
+                            id="yearSelection" class="form-control">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="monthSelection">Month</label>
+                    <select data-bind="options: selectedYear() ? selectedYear().months : null, optionsText: 'prettyMonth', value: selectedMonth"
+                            id="monthSelection" class="form-control">
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <span><i data-bind="fadeVisible: requestsInFlight() > 0" class="fa fa-spinner fa-lg fa-spin"></i></span>
+                </div>
+            </div>
+            <table class="table table-striped table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Votes</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: topVoters">
+                    <tr>
+                        <td class="col-xs-1">
+                            <span data-bind="text: rank"></span>
+                            <!-- ko if: rank() <= 3 -->
+                            <i class="fa fa-trophy"></i>
+                            <!-- /ko -->
+                        </td>
+                        <td class="col-xs-2" data-bind="text: username"></td>
+                        <td class="col-xs-9" data-bind="text: votes"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Donation Details</h2>
+        <table class="table table-striped table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Price</th>
+                    <th>Reward 1</th>
+                    <th>Reward 2</th>
+                    <th>Reward 3</th>
+                    <th>Reward 4</th>
+                    <th>Reward 5</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: products">
+                <td data-bind="text: productId"></td>
+                <td>$<span data-bind="text: price"></span></td>
+                <td data-bind="text: rewardStrings[0]"></td>
+                <td data-bind="text: rewardStrings[1]"></td>
+                <td data-bind="text: rewardStrings[2]"></td>
+                <td data-bind="text: rewardStrings[3]"></td>
+                <td data-bind="text: rewardStrings[4]"></td>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ko with: authInfo -->
+    <div class="modal fade" id="loginDialog" data-backdrop="static" data-keyboard="false" data-bind="bs-modal: !loggedIn() && !loading()">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Login</h2>
+                </div>
+                <div class="modal-body">
+                    <form data-bind="submit: login">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                                <input data-bind="value: usernameField" class="form-control" type="text" id="loginUsername" placeholder="Username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                                <input data-bind="value: passwordField" class="form-control" type="password" id="inputPassword" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+                            <span><i data-bind="fadeVisible: requestInFlight()" class="fa fa-spinner fa-lg fa-spin"></i></span>
+                            <span data-bind="fadeVisible: errorMessage() !== null, text: errorMessage" class="text-danger bg-danger login-message"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</body>
+</html>
