@@ -7,7 +7,8 @@
     "dist"
   ],
   "scripts": {
-    "start": "node dist/web/main.js"
+    "start": "node dist/web/main.js",
+	"build": "npm run build"
   },
   "dependencies": {
     "URIjs": "^1.15.0",

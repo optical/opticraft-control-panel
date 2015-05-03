@@ -1,6 +1,6 @@
 # Opticraft Control Panel #
 
-The Opticraft control panel is a personal project which provides a web interface which can be used by administrators to distribute vote rewards out to players on the Opticraft minecraft server. It is written in typescript.
+The Opticraft control panel is a personal project which provides a web interface that can be used by administrators to distribute rewards out to players on the Opticraft minecraft server. It is written in typescript.
 
 This is an internal tool and as such it is unlikely to be of use to many people outside of the Opticraft development team, however anyone is free to contribute.
 
@@ -22,7 +22,7 @@ This project makes use of a variety of technologies. At its core, it is a nodejs
 And several others!
 
 ##Building
-We use gulp to build both the client. Execute the two lines below and everything should be ready to go. You will of-course need node installed. Version 0.10+ should work.
+We use gulp to build both the client and server. Execute the two lines below and everything should be ready to go. You will of-course need node installed. Tested with 0.10, but newer versions should work.
 
 ```
 npm install
@@ -32,7 +32,7 @@ gulp
 ##Setup
 Setup is slightly challenging at the moment as this repository does not contain all the relevant database scripts needed to get the site up and running. This will be rectified at some point in the future.
 
-The web service can either run behind a reverse proxy or service requests directly. Additionally it supports being run inside a virtual directory without any configuration changes.
+The web service can either run behind a reverse proxy or service requests directly. The `trust-proxy` configuration option should be enabled if run behind a proxy. Additionally it supports being run inside a virtual directory without any configuration changes.
 
 ##Running
 Simple execute `npm run start` and the service will be running on the configured port (default 8080). Logs are output to the console as JSON. When developing you can pipe the output through bunyan for a more readable format.
