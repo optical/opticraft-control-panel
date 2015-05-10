@@ -2,7 +2,7 @@
 import DatabasePoolManager = require('../db-pools');
 import express =  require('express');
 
-import donations = require('../../shared/donations');
+import donations = require('../donations');
 
 import ProductResponse = require('../../shared/model/product-response');
 

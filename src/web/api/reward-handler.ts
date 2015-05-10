@@ -4,8 +4,8 @@ import express =  require('express');
 import util = require('util');
 
 import authMiddleware = require('../auth-middleware');
-import donations = require('../../shared/donations');
-import rewardSender = require('../../shared/reward-sender');
+import donations = require('../donations');
+import rewardSender = require('../reward-sender');
 import mailer = require('../mailer');
 
 interface RewardRequest {

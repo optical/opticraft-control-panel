@@ -2,7 +2,7 @@
 import DatabasePoolManager = require('../db-pools');
 import express =  require('express');
 
-import voteHelper = require('../../shared/votes-helper');
+import voteHelper = require('../votes-helper');
 
 import VotersResponse = require('../../shared/model/voters-response');
 import VotePeriodResponse = require('../../shared/model/vote-period-response');

@@ -1,5 +1,5 @@
 /// <reference path="tsd.d.ts" />
-import nodeMysql = require('../shared/node-mysql');
+import nodeMysql = require('./node-mysql');
 import mysql = require('mysql');
 import config = require('./config');
 import bunyan = require('bunyan');
